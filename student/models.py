@@ -13,4 +13,17 @@ class Student(models.Model):
     address = models.CharField(max_length=250, null=False)
 
     def __str__(self):
-        return self.name + '-'+ str(self.admissionNumber)
+        return str(self.admissionNumber)
+
+
+class Fees(models.Model):
+    receiptNo = models.IntegerField()
+    date = models.DateField()
+    admNo = models.ForeignKey(Student, on_delete=None)
+    previousDues = models.IntegerField()
+    amount = models.IntegerField()
+    amountPaid = models.IntegerField()
+    dues = models.IntegerField()
+
+    def __str__(self):
+        return str(self.admNo)
