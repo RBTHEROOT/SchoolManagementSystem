@@ -43,6 +43,20 @@ class FeePaid(models.Model):
     def __str__(self):
         return str(self.admissionNumber)
 
+class StudentRecord(models.Model):
+    admissionNumber = models.ForeignKey(FeePaid.admissionNumber, on_delete=models.CASCADE)
+    name = models.ForeignKey(Admission.std)
+    std = models.ForeignKey(Admission.std)
+    feePaidOfMonth = models.ForeignKey(FeePaid.feeOfMonth)
+    amountPaid = models.ForeignKey(FeePaid.previousDues)
+    duesAmount = models.ForeignKey(FeePaid.dues)
+
+    def __str__(self):
+        return str(self.admissionNumber)
+
+
+
+
 
 
 
