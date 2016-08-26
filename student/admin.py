@@ -17,14 +17,14 @@ class FeePaidAdmin(admin.ModelAdmin):
     list_display = ['receiptNo', 'admissionNumber', 'amount', 'paidAmount', 'dues', 'date']
     class Meta:
         model = FeePaid
-
-class StudentRecordAdmin(admin.ModelAdmin):
-    list_display = ['admissionNumber', 'name', 'std', 'feePaidOfMonth', 'amountPaid', 'duesAmount']
-    class Meta:
-        model = StudentRecord
+#
+# class StudentRecordAdmin(admin.ModelAdmin):
+#     list_display = ['admissionNumber', 'name', 'std', 'feePaidOfMonth', 'amountPaid', 'duesAmount']
+#     class Meta:
+#         model = StudentRecord
 
 admin.site.register(Admission, AdmissionAdmin)
 admin.site.register(FeeType)
 admin.site.register(FeePaid, FeePaidAdmin)
 admin.site.register(FeeStructure, FeeStructureAdmin)
-admin.site.register(StudentRecord, StudentRecordAdmin)
+admin.site.register(StudentRecord)

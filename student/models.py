@@ -24,7 +24,7 @@ class FeeType(models.Model):
 
 class FeeStructure(models.Model):
     std = models.IntegerField()
-    feeType = models.ForeignKey(FeeType)
+    feeType = models.ForeignKey(FeeType, on_delete=None)
     amount = models.IntegerField()
 
     def __str__(self):
@@ -33,7 +33,7 @@ class FeeStructure(models.Model):
 class FeePaid(models.Model):
     receiptNo = models.AutoField(primary_key=True)
     date = models.DateField(auto_now_add=True)
-    admissionNumber = models.ForeignKey(Admission)
+    admissionNumber = models.ForeignKey(Admission, on_delete=None)
     feeOfMonth = models.CharField(max_length=12)
     previousDues = models.IntegerField(default=0)
     amount = models.IntegerField()
@@ -41,18 +41,19 @@ class FeePaid(models.Model):
     dues = models.IntegerField()
 
     def __str__(self):
-        return str(self.admissionNumber)
+        return str(self.receiptNo)
 
 class StudentRecord(models.Model):
-    admissionNumber = models.ForeignKey(FeePaid.admissionNumber, on_delete=models.CASCADE)
-    name = models.ForeignKey(Admission.std)
-    std = models.ForeignKey(Admission.std)
-    feePaidOfMonth = models.ForeignKey(FeePaid.feeOfMonth)
-    amountPaid = models.ForeignKey(FeePaid.previousDues)
-    duesAmount = models.ForeignKey(FeePaid.dues)
+    admissionNumber = models.ForeignKey(FeePaid, FeePaid.admissionNumber)
+    name = models.ForeignKey(Admission, Admission.name)
+    std = models.ForeignKey(Admission,Admission.std)
+    feePaidOfMonth = models.ForeignKey(FeePaid, FeePaid.feeOfMonth)
+    amountPaid = models.ForeignKey(FeePaid, FeePaid.paidAmount)
+    duesAmount = models.ForeignKey(FeePaid,FeePaid.dues)
 
     def __str__(self):
         return str(self.admissionNumber)
+
 
 
 
