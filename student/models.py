@@ -15,3 +15,16 @@ class Admission(models.Model):
 
     def __str__(self):
         return str(self.admissionNumber)
+class FeeType(models.Model):
+    typeOfFee = models.CharField(max_length=25)
+
+    def __str__(self):
+        return self.typeOfFee
+
+class FeeStructure(models.Model):
+
+    class Meta:
+        unique_together = (('feeType', 'std'), )
+    feeType = models.ForeignKey(FeeType)
+    std = models.CharField(max_length=10)
+    amount = models.IntegerField()
