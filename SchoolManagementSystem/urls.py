@@ -5,6 +5,6 @@ from student import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^$', views.index, name='index'),
     url(r'', include('student.urls'))
 ]

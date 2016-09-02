@@ -2,11 +2,22 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from .models import Admission, Std,FeeType,FeeStructure,FeeReceived
 from django.core.urlresolvers import reverse_lazy
 from django.views import generic
+from django.shortcuts import render
 
 # Create your views here.
 
-class IndexView(generic.TemplateView):
+
+def index(request):
+    all_students = Admission.objects.all()
     template_name = 'index.html'
+    context = {'all_students': all_students}
+    return render(request, template_name, context)
+
+def AllStudents(request):
+    all_students = Admission.objects.all()
+    template_name = 'AllStudents.html'
+    context = {'all_students': all_students}
+    return render(request, template_name, context)
 
 class AdmissionCrate(CreateView):
     model = Admission

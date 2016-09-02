@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Web Based School Management System</title>
 
     <!-- Bootstrap core CSS -->
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,12 +41,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">School Management System</a>
+          <a class="navbar-brand" href="{% url 'student:index' %}">School Management System</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a href="{% url 'student:index' %}">Dashboard</a></li>
             <li><a href="#">Help</a></li>
           </ul>
           <form class="navbar-form navbar-right">
@@ -65,10 +64,12 @@
             <li><a href="#">Export</a></li>
           </ul>
           <ul class="nav nav-sidebar">
-            <li><a href="">Admission</a></li>
-            <li><a href="">Describe Fee Type</a></li>
-            <li><a href="">Describe Fee Structure</a></li>
-            <li><a href="">Fee Receipt</a></li>
+              <li><a href="{% url 'student:std-add' %}">Describe Class</a> </li>
+            <li><a href="{% url 'student:feetype-add' %}">Describe Fee Type</a></li>
+            <li><a href="{% url 'student:feestrucutre-add' %}">Describe Fee Structure</a></li>
+            <li><a href="{% url 'student:admission-add' %}">Admission</a></li>
+            <li><a href="{% url 'student:feereceived-add' %}">Fee Receipt</a></li>
+              <li><a href="{% url 'student:all' %}">All Students</a></li>
           </ul>
         </div>
           </div>
