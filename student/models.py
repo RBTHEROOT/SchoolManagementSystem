@@ -5,8 +5,7 @@ from django.core.urlresolvers import reverse
 # Create your models here.
 
 class Std(models.Model):
-    standard = models.CharField(max_length=3)
-
+    standard = models.CharField(max_length=3, unique=True)
     def __str__(self):
         return self.standard
 
@@ -46,6 +45,7 @@ class Admission(models.Model):
 
     def __str__(self):
         return str(self.admissionNumber)
+
 
 
 class FeeReceived(models.Model):
